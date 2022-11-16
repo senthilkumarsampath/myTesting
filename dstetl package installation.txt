@@ -1,0 +1,59 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS E:\Senthil\myTesting> pip install keyring artifacts-keyring
+Collecting keyring
+  Downloading keyring-23.8.2-py3-none-any.whl (34 kB)
+Collecting artifacts-keyring
+  Downloading artifacts_keyring-0.3.2-py2.py3-none-any.whl (4.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 2.8 MB/s eta 0:00:00
+Collecting pywin32-ctypes!=0.1.0,!=0.1.1
+  Downloading pywin32_ctypes-0.2.0-py2.py3-none-any.whl (28 kB)
+Collecting requests>=2.20.0
+  Downloading requests-2.28.1-py3-none-any.whl (62 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 kB 3.3 MB/s eta 0:00:00
+Collecting certifi>=2017.4.17
+  Downloading certifi-2022.6.15-py3-none-any.whl (160 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.2/160.2 kB 3.2 MB/s eta 0:00:00
+Collecting charset-normalizer<3,>=2
+  Downloading charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.12-py2.py3-none-any.whl (140 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.4/140.4 kB 4.2 MB/s eta 0:00:00
+Collecting idna<4,>=2.5
+  Downloading idna-3.3-py3-none-any.whl (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.2/61.2 kB ? eta 0:00:00
+Installing collected packages: pywin32-ctypes, urllib3, keyring, idna, charset-normalizer, certifi, requests, artifacts-keyring
+  WARNING: The script keyring.exe is installed in 'C:\Users\senthilps\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+ra8p0\LocalCache\local-packages\Python310\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed artifacts-keyring-0.3.2 certifi-2022.6.15 charset-normalizer-2.1.1 idna-3.3 keyring-23.8.2 pywin32-ctypes-0.2.0 requests-2.28.1 urllib3-1.26.12
+PS E:\Senthil\myTesting> pip install --extra-index-url=https://DST-ETL:gmkdre2tcnq6vnlwhxmt42p5ekjkhgmxkof7mlzbeqe5qnpcexyq@pkgs.dev.azure.com/deantaglobal/DST/_packaging/DST-ETL/pypi/simple/ dstetl==1.0.2.2
+Collecting dstetl==1.0.2.2
+  Downloading https://pkgs.dev.azure.com/deantaglobal/d82a3160-b1a8-4695-849a-9a892596d110/_packaging/a6860f9f-b6b3-455c-a362-6923ea1ebcd4/pypi/download/dstetl/1.0.2.2/dstetl-1.0.2.2-py3-none-any.whl (27 kB)
+Installing collected packages: dstetl
+Successfully installed dstetl-1.0.2.2
+PS E:\Senthil\myTesting> python 
+Python 3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import dstetl
+>>> from dstetl import extract_docx_properties
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: cannot import name 'extract_docx_properties' from 'dstetl' (C:\Users\senthilps\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\dstetl\__init__.py)
+>>> from dstetl.extractor import extract_docx_properties
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'dstetl.extractor'
+>>> from dstetl.extractors import extract_docx_properties 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: cannot import name 'extract_docx_properties' from 'dstetl.extractors' (C:\Users\senthilps\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\dstetl\extractors\__init__.py)
+>>> from dstetl.extractors.docx import extract_docx_properties
+>>> exit
+Use exit() or Ctrl-Z plus Return to exit
+>>> exit()
+PS E:\Senthil\myTesting>
