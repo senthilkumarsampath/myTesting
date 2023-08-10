@@ -1,0 +1,44 @@
+﻿PROJECT MANAGEMENT - HANDOVER NOTES
+
+Handover Notes:
+
+Book title: Research Handbook on International Insurance Law and Regulation
+Author/Eds: Julian Burling and Kevin Lazarus
+ISBN/E-ISBN: 978 1 80220 588 6 / 978 1 80220 589 3
+e-Book subject collection: Law
+Edited work or single author?: Edited
+Number of files: Admin folder: 4; MS files: 39
+Composition instructions: EE10 (law)
+Series: Research Handbooks in Financial Law
+Word count: 467,078
+Figures: 2 (2 in Ch 19) (all to be greyscale)
+Tables: 3 (1 in Ch 23; 2 in Ch 27)
+Maths: /
+Boxes: /
+Footnotes or endnotes?: Footnotes
+Legal tables: Yes (tables of cases and legislation to be prepared – follow style of first edn)
+Index: Yes
+
+Author contact details:
+Mr Kevin Lazarus, email: Kevin.Lazarus@lloyds.com
+
+
+Other details:
+    • © The Editors and Contributors Severally.
+    • Second edition (PDF of first edition included in Admin folder for reference).
+    • Contributed volume so edit for consistency within chapters.
+    • ToC to follow usual EE layout. The ToC supplied in author files is for info only (remove author affiliations from prelims and info re whether chapters are new/revised/unchanged etc.).
+    • There is a ‘Lloyd’s page’ in the prelims (to follow the list of contributors). See first edn for style. I will pass the Lloyd’s logo on when I have it.
+    • Abstracts and keywords are supplied for each chapter for the metadata spreadsheet but are not to appear in the book itself.
+    • Please add part title pages as per ToC.
+    • Add full points to the end of footnotes where missing.
+    • Remove author affiliations/contact details from chapter opening pages.
+    • Add chapter numbers to ch. opening pages where missing.
+    • Footnote numbering to start from 1 in each chapter (house style avoids using asterisked footnotes, please renumber from 1 and amend cross-references accordingly).
+    • Change any endnotes to footnotes.
+    • Use en rules (not hyphens) for number spans.
+    • Prefer single quotation marks to double (double for a quote within a quote).
+    • Quotes should be roman not italic (unless for emphasis).
+    • There are some odd bits of coding in some chapters – this can be removed. 
+    • Where new footnotes have been added, please check note renumbering and update cross-refs accordingly.
+    • Figure and table numbers to be prefixed with chapter number as per usual convention.
