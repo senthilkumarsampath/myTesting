@@ -1,0 +1,2593 @@
+{
+    "dtd_version": "4.28.4",
+    "article": {
+        "export_date": "2023-12-12 00:00:00.0",
+        "external_id": "",
+        "lang": "EN",
+        "ms_no": "JME-23-0079.R1",
+        "rev": "1",
+        "journal": {
+            "publisher_name": {
+                "publisher_name": "Journal of Molecular Endocrinology"
+            },
+            "full_journal_title": {
+                "full_journal_title": "Journal of Molecular Endocrinology"
+            },
+            "site_short_name": {
+                "site_short_name": "sfe-jme"
+            },
+            "journal_abbreviation": {
+                "journal_abbreviation": "JME"
+            },
+            "issn": [
+                {
+                    "issn_type": "print",
+                    "issn": "0952-5041"
+                },
+                {
+                    "issn_type": "digital",
+                    "issn": "1479-6813"
+                }
+            ]
+        },
+        "article_status": {
+            "decision_status": "accept",
+            "article_status": "Accepted"
+        },
+        "article_title": {
+            "article_title": "New methods to investigate the GnRH pulse generator"
+        },
+        "vernacular_title": {
+            "vernacular_title": "Investigating the GnRH pulse generator"
+        },
+        "author_list": {
+            "author": [
+                {
+                    "auth_URL": "",
+                    "author_seq": "1",
+                    "corr": "true",
+                    "user_id": "108862110",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Deyana"
+                    },
+                    "last_name": {
+                        "last_name": "Ivanova"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "deyana.ivanova@yahoo.com"
+                    },
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192501",
+                                    "name": "Gonadotrophins",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192559",
+                                    "name": "Stress",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192518",
+                                    "name": "Neurotransmitters",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192546",
+                                    "name": "Female reproduction",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192443",
+                                    "name": "Hypothalamus and Neuroendocrinology",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371079",
+                                "name": "Yes – keep me up to date",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "orcid": {
+                        "orcid": "0000-0003-1508-166X"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "4616"
+                        },
+                        "dept": {
+                            "dept": "Department of Women and Children’s Health"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "state": {
+                            "state": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        }
+                    },
+                    "profile_affiliation": {
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "4616"
+                        },
+                        "dept": {
+                            "dept": "Department of Women and Children’s Health"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "state": {
+                            "state": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "4616"
+                        },
+                        "dept": {
+                            "dept": "Women and Children’s Health"
+                        },
+                        "addr1": {
+                            "addr1": "2.92W, Hodgkin Building"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "SE1 1UL"
+                        }
+                    }
+                },
+                {
+                    "auth_URL": "",
+                    "author_seq": "2",
+                    "corr": "false",
+                    "user_id": "8581553",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Kevin"
+                    },
+                    "last_name": {
+                        "last_name": "O'Byrne"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "kevin.o'byrne@kcl.ac.uk"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "4616"
+                        },
+                        "dept": {
+                            "dept": "Department of Women and Children’s Health"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "state": {
+                            "state": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "phone": {
+                            "phone": "+44 (0)20-7848-6286"
+                        }
+                    },
+                    "profile_affiliation": {
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "4616"
+                        },
+                        "dept": {
+                            "dept": "Department of Women and Children’s Health"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "state": {
+                            "state": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "phone": {
+                            "phone": "+44 (0)20-7848-6286"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "dept": {
+                            "dept": "Division of Reproduction & Endocrinology"
+                        },
+                        "addr1": {
+                            "addr1": "2.36D New Hunt's House"
+                        },
+                        "addr2": {
+                            "addr2": "Guy's Campus"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "SE1 1UL"
+                        },
+                        "phone": {
+                            "phone": "02078486286"
+                        }
+                    }
+                }
+            ]
+        },
+        "editor_list": {
+            "editor": [
+                {
+                    "decided": "true",
+                    "is_staff": "true",
+                    "role": "Editor-in-Chief",
+                    "user_id": "5270060",
+                    "salutation": {
+                        "salutation": "Prof."
+                    },
+                    "first_name": {
+                        "first_name": "Colin"
+                    },
+                    "last_name": {
+                        "last_name": "Farquharson"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "colin.farquharson@roslin.ed.ac.uk"
+                    },
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192535",
+                                    "name": "Bone",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192438",
+                                    "name": "Growth hormone",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192580",
+                                    "name": "IGF",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192517",
+                                    "name": "IGF receptor",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192552",
+                                    "name": "IGFBP-s",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371080",
+                                "name": "No",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "flags": {
+                        "flag": {
+                            "color": "White",
+                            "flag": "Editorial Board Member"
+                        }
+                    },
+                    "orcid": {
+                        "orcid": "0000-0002-4970-4039"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate, /read-limited]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "Roslin Institute"
+                        },
+                        "dept": {
+                            "dept": "Bone Biology Group"
+                        },
+                        "addr1": {
+                            "addr1": "Roslin"
+                        },
+                        "addr2": {
+                            "addr2": "Midlothian"
+                        },
+                        "city": {
+                            "city": "Edinburgh"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "EH25 9PS"
+                        },
+                        "phone": {
+                            "phone": "44 (0) 131 527 4399"
+                        },
+                        "fax": {
+                            "fax": "+44 (0) 131 440 0434"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Roslin Institute"
+                        },
+                        "dept": {
+                            "dept": "Bone Biology Group"
+                        },
+                        "addr1": {
+                            "addr1": "Roslin"
+                        },
+                        "addr2": {
+                            "addr2": "Midlothian"
+                        },
+                        "city": {
+                            "city": "Edinburgh"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "EH25 9PS"
+                        },
+                        "phone": {
+                            "phone": "44 (0) 131 527 4399"
+                        },
+                        "fax": {
+                            "fax": "+44 (0) 131 440 0434"
+                        }
+                    }
+                },
+                {
+                    "decided": "false",
+                    "is_staff": "true",
+                    "role": "Review Editor",
+                    "user_id": "13882197",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Morag"
+                    },
+                    "middle_name": {
+                        "middle_name": "J"
+                    },
+                    "last_name": {
+                        "last_name": "Young"
+                    },
+                    "degree": {
+                        "degree": "BSc Hons PhD"
+                    },
+                    "email": [
+                        {
+                            "addr_type": "primary",
+                            "email": "Morag.Young@baker.edu.au"
+                        },
+                        {
+                            "addr_type": "secondary",
+                            "email": "mjyoung@unimelb.edu.au"
+                        }
+                    ],
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192493",
+                                    "name": "Nuclear receptors",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192565",
+                                    "name": "Cardiovascular",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192472",
+                                    "name": "Steroid homones",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192450",
+                                    "name": "Adrenal hormones",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192455",
+                                    "name": "Adrenal cortex",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371079",
+                                "name": "Yes – keep me up to date",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "comments": {
+                        "comments": "Young, Morag, morag.young@princehnerys.org  merged with this user on 25-Feb-2009 by Jones, Laura"
+                    },
+                    "flags": {
+                        "flag": {
+                            "color": "White",
+                            "flag": "Editorial Board Member"
+                        }
+                    },
+                    "orcid": {
+                        "orcid": "0000-0003-0450-5375"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": [
+                        {
+                            "seq": "1",
+                            "inst": {
+                                "inst": "Baker Heart and Diabetes Institute"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "104284"
+                            },
+                            "dept": {
+                                "dept": "Cardiovascular Endocrinology"
+                            },
+                            "addr1": {
+                                "addr1": "75 Commerical Rd"
+                            },
+                            "addr2": {
+                                "addr2": "Prahran"
+                            },
+                            "city": {
+                                "city": "Melbourne"
+                            },
+                            "state": {
+                                "state": "Victoria"
+                            },
+                            "country": {
+                                "country_code": "AU",
+                                "country": "Australia"
+                            },
+                            "post_code": {
+                                "post_code": "3004"
+                            },
+                            "fax": {
+                                "fax": "@moragjyoung"
+                            }
+                        },
+                        {
+                            "seq": "2",
+                            "inst": {
+                                "inst": "The University of Melbourne Faculty of Medicine Dentistry and Health Sciences"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "85084"
+                            },
+                            "dept": {
+                                "dept": "The Baker Department of Cardiac and Metabolic Health and Disease"
+                            },
+                            "city": {
+                                "city": "Melbourne"
+                            },
+                            "state": {
+                                "state": "Victoria"
+                            },
+                            "country": {
+                                "country_code": "AU",
+                                "country": "Australia"
+                            },
+                            "post_code": {
+                                "post_code": "3010"
+                            }
+                        }
+                    ],
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Baker Heart and Diabetes Institute"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "104284"
+                        },
+                        "dept": {
+                            "dept": "Cardiovascular Endocrinology"
+                        },
+                        "addr1": {
+                            "addr1": "75 Commerical Rd"
+                        },
+                        "addr2": {
+                            "addr2": "Prahran"
+                        },
+                        "city": {
+                            "city": "Melbourne"
+                        },
+                        "state": {
+                            "state": "Victoria"
+                        },
+                        "country": {
+                            "country_code": "AU",
+                            "country": "Australia"
+                        },
+                        "post_code": {
+                            "post_code": "3004"
+                        },
+                        "fax": {
+                            "fax": "@moragjyoung"
+                        }
+                    }
+                },
+                {
+                    "decided": "true",
+                    "is_staff": "true",
+                    "role": "Senior Editor",
+                    "user_id": "5270060",
+                    "salutation": {
+                        "salutation": "Prof."
+                    },
+                    "first_name": {
+                        "first_name": "Colin"
+                    },
+                    "last_name": {
+                        "last_name": "Farquharson"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "colin.farquharson@roslin.ed.ac.uk"
+                    },
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192535",
+                                    "name": "Bone",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192438",
+                                    "name": "Growth hormone",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192580",
+                                    "name": "IGF",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192517",
+                                    "name": "IGF receptor",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192552",
+                                    "name": "IGFBP-s",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371080",
+                                "name": "No",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "flags": {
+                        "flag": {
+                            "color": "White",
+                            "flag": "Editorial Board Member"
+                        }
+                    },
+                    "orcid": {
+                        "orcid": "0000-0002-4970-4039"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate, /read-limited]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "Roslin Institute"
+                        },
+                        "dept": {
+                            "dept": "Bone Biology Group"
+                        },
+                        "addr1": {
+                            "addr1": "Roslin"
+                        },
+                        "addr2": {
+                            "addr2": "Midlothian"
+                        },
+                        "city": {
+                            "city": "Edinburgh"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "EH25 9PS"
+                        },
+                        "phone": {
+                            "phone": "44 (0) 131 527 4399"
+                        },
+                        "fax": {
+                            "fax": "+44 (0) 131 440 0434"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Roslin Institute"
+                        },
+                        "dept": {
+                            "dept": "Bone Biology Group"
+                        },
+                        "addr1": {
+                            "addr1": "Roslin"
+                        },
+                        "addr2": {
+                            "addr2": "Midlothian"
+                        },
+                        "city": {
+                            "city": "Edinburgh"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "EH25 9PS"
+                        },
+                        "phone": {
+                            "phone": "44 (0) 131 527 4399"
+                        },
+                        "fax": {
+                            "fax": "+44 (0) 131 440 0434"
+                        }
+                    }
+                }
+            ]
+        },
+        "reviewer_list": {
+            "reviewer": [
+                {
+                    "invite_history": "4",
+                    "role": "Reviewer",
+                    "user_id": "63191276",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Robert L."
+                    },
+                    "last_name": {
+                        "last_name": "Goodman"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "rgoodman@hsc.wvu.edu"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "W Virginia Univ"
+                        },
+                        "country": {
+                            "country_code": "US",
+                            "country": "United States"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "W Virginia Univ"
+                        },
+                        "country": {
+                            "country_code": "US",
+                            "country": "United States"
+                        }
+                    },
+                    "rating": {
+                        "rating": "2.00"
+                    }
+                },
+                {
+                    "invite_history": "2",
+                    "role": "Reviewer",
+                    "user_id": "82720667",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Juan"
+                    },
+                    "last_name": {
+                        "last_name": "Roa"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "b62rorij@uco.es"
+                    },
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192546",
+                                    "name": "Female reproduction",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192573",
+                                    "name": "Male reproduction",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192432",
+                                    "name": "Metabolism",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192577",
+                                    "name": "Obesity",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192479",
+                                    "name": "Ovarian function",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371080",
+                                "name": "No",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "University of Cordoba - Campus of Health Sciences"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "621936"
+                        },
+                        "addr1": {
+                            "addr1": "Menendez Pidal s/n"
+                        },
+                        "city": {
+                            "city": "Cordoba"
+                        },
+                        "country": {
+                            "country_code": "ES",
+                            "country": "Spain"
+                        },
+                        "post_code": {
+                            "post_code": "14004"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "University of Cordoba - Campus of Health Sciences"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "621936"
+                        },
+                        "addr1": {
+                            "addr1": "Menendez Pidal s/n"
+                        },
+                        "city": {
+                            "city": "Cordoba"
+                        },
+                        "country": {
+                            "country_code": "ES",
+                            "country": "Spain"
+                        },
+                        "post_code": {
+                            "post_code": "14004"
+                        }
+                    },
+                    "rating": {
+                        "rating": "2.00"
+                    }
+                }
+            ]
+        },
+        "publication_type": {
+            "publication_type": "Invited review"
+        },
+        "article_id_list": {
+            "article_id": {
+                "id_type": "doi",
+                "article_id": "10.1530/JME-23-0079"
+            }
+        },
+        "file_list": {
+            "file": [
+                {
+                    "file_category": "",
+                    "file_name": "JME-23-0079-File001.docx",
+                    "submission_medium": "online",
+                    "file_createddate": {
+                        "file_createddate": "2023-12-11 06:28:48.48"
+                    },
+                    "file_designation": {
+                        "file_designation": "Main Document"
+                    },
+                    "file_format": {
+                        "file_format": "docx"
+                    },
+                    "file_extension": {
+                        "file_extension": "docx"
+                    },
+                    "file_originalname": {
+                        "file_originalname": "R1_Ivanova_2023_et_al_New_methods_to_investigate_the_GnRH_pulse_generator_JME_Clean.docx"
+                    },
+                    "attribute": {
+                        "attr_name": "File Designation",
+                        "attribute": "Main Document"
+                    },
+                    "num_pages_calc": {
+                        "num_pages_calc": "117.50"
+                    },
+                    "num_pages_actual": {
+                        "num_pages_actual": "117.50"
+                    }
+                },
+                {
+                    "file_category": "",
+                    "file_name": "JME-23-0079-File002.pdf",
+                    "submission_medium": "online",
+                    "file_createddate": {
+                        "file_createddate": "2023-11-06 03:00:15.15"
+                    },
+                    "file_designation": {
+                        "file_designation": "Figure"
+                    },
+                    "file_format": {
+                        "file_format": "pdf"
+                    },
+                    "file_extension": {
+                        "file_extension": "pdf"
+                    },
+                    "file_originalname": {
+                        "file_originalname": "Figure1.pdf"
+                    },
+                    "file_caption": {
+                        "file_caption": "Figure 1.  The GnRH pulse generator.  The circuit dynamics regulating the episodic activity of the KNDy neuronal network located in the arcuate nucleus of the hypothalamus (ARC) involve the action of glutamate (cyan), neurokinin B (NKB) (green), and dynorphin (purple) signalling onto glutamatergic, neurokinin 3 and kappa opioid receptors, respectively, within the network.  Voltage-gated potassium channels and estrogen receptors on KNDy neurons further modulate the activity of the network.  Only kiss1 release from KNDy fibers activates the distal gonadotropin-releasing hormone (GnRH) dendrites despite the potential release of all neuropeptides from these neurons and stimulate the release of GnRH in the median eminence (ME).  KNDy neurons regulate nitric oxide expressing neurons in the ARC providing a global reset of the signalling pathway components in GnRH neurons required for the next episode of kiss1 stimulation.  There is functional synaptic contact between KNDy and kiss1 neurons in the preoptic area (POA).  KNDy neuron activity amplifies the LH surge via glutamate and dynorphin release onto POA kiss1 neurons.  Kiss1 neurons in the POA release kiss1 onto GnRH soma in this region to modulate the activity of GnRH neurons.  GnRH (blue), KNDy (gold), Nitric oxide (yellow), Kiss1 (red)."
+                    },
+                    "attribute": {
+                        "attr_name": "File Designation",
+                        "attribute": "Figure"
+                    },
+                    "num_pages_calc": {
+                        "num_pages_calc": "0.30"
+                    },
+                    "num_pages_actual": {
+                        "num_pages_actual": "0.30"
+                    }
+                },
+                {
+                    "file_category": "",
+                    "file_name": "JME-23-0079-File003.doc",
+                    "submission_medium": "online",
+                    "file_createddate": {
+                        "file_createddate": "2023-12-12 12:09:01.1"
+                    },
+                    "file_designation": {
+                        "file_designation": "Supplemental File Not for Review"
+                    },
+                    "file_format": {
+                        "file_format": "doc"
+                    },
+                    "file_extension": {
+                        "file_extension": "doc"
+                    },
+                    "file_originalname": {
+                        "file_originalname": "JME 230079 Production Sheet.doc"
+                    },
+                    "attribute": {
+                        "attr_name": "File Designation",
+                        "attribute": "Supplemental File Not for Review"
+                    },
+                    "num_pages_calc": {
+                        "num_pages_calc": "0.00"
+                    },
+                    "num_pages_actual": {
+                        "num_pages_actual": "0.00"
+                    }
+                }
+            ]
+        },
+        "history": {
+            "ms_id": [
+                {
+                    "ms_no": "JME-23-0079.R1",
+                    "rev_id": {
+                        "rev_id": "1"
+                    },
+                    "submitted_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "11"
+                        },
+                        "day": {
+                            "day": "06"
+                        },
+                        "hour": {
+                            "hour": "15"
+                        },
+                        "minute": {
+                            "minute": "03"
+                        },
+                        "second": {
+                            "second": "42"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "received_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "06"
+                        },
+                        "day": {
+                            "day": "10"
+                        },
+                        "hour": {
+                            "hour": "11"
+                        },
+                        "minute": {
+                            "minute": "05"
+                        },
+                        "second": {
+                            "second": "34"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "revised_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "11"
+                        },
+                        "day": {
+                            "day": "06"
+                        },
+                        "hour": {
+                            "hour": "15"
+                        },
+                        "minute": {
+                            "minute": "03"
+                        },
+                        "second": {
+                            "second": "42"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "decision_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "12"
+                        },
+                        "day": {
+                            "day": "12"
+                        },
+                        "hour": {
+                            "hour": "11"
+                        },
+                        "minute": {
+                            "minute": "13"
+                        },
+                        "second": {
+                            "second": "08"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "transmission_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "06"
+                        },
+                        "day": {
+                            "day": "10"
+                        },
+                        "hour": {
+                            "hour": "11"
+                        },
+                        "minute": {
+                            "minute": "05"
+                        },
+                        "second": {
+                            "second": "34"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    }
+                },
+                {
+                    "ms_no": "JME-23-0079",
+                    "rev_id": {
+                        "rev_id": "0"
+                    },
+                    "submitted_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "06"
+                        },
+                        "day": {
+                            "day": "10"
+                        },
+                        "hour": {
+                            "hour": "11"
+                        },
+                        "minute": {
+                            "minute": "05"
+                        },
+                        "second": {
+                            "second": "34"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "received_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "06"
+                        },
+                        "day": {
+                            "day": "10"
+                        },
+                        "hour": {
+                            "hour": "11"
+                        },
+                        "minute": {
+                            "minute": "05"
+                        },
+                        "second": {
+                            "second": "34"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "decision_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "08"
+                        },
+                        "day": {
+                            "day": "11"
+                        },
+                        "hour": {
+                            "hour": "06"
+                        },
+                        "minute": {
+                            "minute": "28"
+                        },
+                        "second": {
+                            "second": "20"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "transmission_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "06"
+                        },
+                        "day": {
+                            "day": "10"
+                        },
+                        "hour": {
+                            "hour": "11"
+                        },
+                        "minute": {
+                            "minute": "05"
+                        },
+                        "second": {
+                            "second": "34"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    }
+                }
+            ]
+        },
+        "abstract": {
+            "abstract": "The exact neural construct underlying the dynamic secretion of gonadotropin-releasing hormone (GnRH) has only recently been identified despite the detection of multiunit electrical activity volleys associated with pulsatile luteinizing hormone (LH) secretion four decades ago.  Since the discovery of kisspeptin/neurokinin B/dynorphin, KNDy, neurons in the mammalian hypothalamus there has been much research into the role of this neuronal network in controlling the oscillatory secretion of gonadotropin hormones.  In this review, we provide an update of the progressive application of cutting-edge techniques combined with mathematical modelling by the neuroendocrine community, which are transforming the functional investigation of the GnRH pulse generator.  Understanding the nature and function of the GnRH pulse generator can greatly inform a wide range of clinical studies investigating infertility treatments."
+        },
+        "notes": {
+            "notes": "NOTE - two corresponding authors (Deyana Ivanova and Kevin O'Byrne)\r\n\r\nColour 1 print colour (1 figure total). Free as SfE member\r\nSupp files - 0\r\nNIH - no\r\nOA - yes. free as R&P deal\r\nFig/table permissions - n/a;"
+        },
+        "content": {
+            "attr_type": {
+                "id": "5640",
+                "name": "Keywords",
+                "attribute": [
+                    {
+                        "id": "5192443",
+                        "name": "Hypothalamus and Neuroendocrinology",
+                        "attribute": "selected"
+                    },
+                    {
+                        "id": "5192518",
+                        "name": "Neurotransmitters",
+                        "attribute": "selected"
+                    },
+                    {
+                        "id": "5192546",
+                        "name": "Female reproduction",
+                        "attribute": "selected"
+                    },
+                    {
+                        "id": "5192573",
+                        "name": "Male reproduction",
+                        "attribute": "selected"
+                    }
+                ]
+            },
+            "total_pages_calc": {
+                "total_pages_calc": "117.80"
+            },
+            "total_tables": {
+                "total_tables": "0"
+            },
+            "num_color_figures": {
+                "num_color_figures": "0"
+            },
+            "num_bw_figures": {
+                "num_bw_figures": "1"
+            },
+            "total_figures": {
+                "total_figures": "1"
+            },
+            "total_pdf_pages": {
+                "total_pdf_pages": "117.80"
+            }
+        },
+        "office_contact": {
+            "user_id": "",
+            "email": {
+                "addr_type": "primary",
+                "email": "jme@bioscientifica.com"
+            },
+            "affiliation": {
+                "seq": "1",
+                "phone": {
+                    "phone": "+44 (0) 1454 642232"
+                },
+                "fax": {
+                    "fax": "+44 (0) 1454 642201"
+                }
+            },
+            "current_profile_affiliation": {
+                "phone": {
+                    "phone": "+44 (0) 1454 642232"
+                },
+                "fax": {
+                    "fax": "+44 (0) 1454 642201"
+                }
+            }
+        },
+        "user_list": {
+            "user": [
+                {
+                    "contact": "true",
+                    "is_staff": "false",
+                    "submitter": "true",
+                    "submitting_agent": "false",
+                    "user_id": "108862110",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Deyana"
+                    },
+                    "last_name": {
+                        "last_name": "Ivanova"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "deyana.ivanova@yahoo.com"
+                    },
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192501",
+                                    "name": "Gonadotrophins",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192559",
+                                    "name": "Stress",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192518",
+                                    "name": "Neurotransmitters",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192546",
+                                    "name": "Female reproduction",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192443",
+                                    "name": "Hypothalamus and Neuroendocrinology",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371079",
+                                "name": "Yes – keep me up to date",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "orcid": {
+                        "orcid": "0000-0003-1508-166X"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "4616"
+                        },
+                        "dept": {
+                            "dept": "Women and Children’s Health"
+                        },
+                        "addr1": {
+                            "addr1": "2.92W, Hodgkin Building"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "SE1 1UL"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "4616"
+                        },
+                        "dept": {
+                            "dept": "Women and Children’s Health"
+                        },
+                        "addr1": {
+                            "addr1": "2.92W, Hodgkin Building"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "SE1 1UL"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "8581553",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Kevin"
+                    },
+                    "last_name": {
+                        "last_name": "O'Byrne"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "kevin.o'byrne@kcl.ac.uk"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "dept": {
+                            "dept": "Division of Reproduction & Endocrinology"
+                        },
+                        "addr1": {
+                            "addr1": "2.36D New Hunt's House"
+                        },
+                        "addr2": {
+                            "addr2": "Guy's Campus"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "SE1 1UL"
+                        },
+                        "phone": {
+                            "phone": "02078486286"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "King's College London"
+                        },
+                        "dept": {
+                            "dept": "Division of Reproduction & Endocrinology"
+                        },
+                        "addr1": {
+                            "addr1": "2.36D New Hunt's House"
+                        },
+                        "addr2": {
+                            "addr2": "Guy's Campus"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "SE1 1UL"
+                        },
+                        "phone": {
+                            "phone": "02078486286"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "16667003",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Waljit"
+                    },
+                    "middle_name": {
+                        "middle_name": "Singh"
+                    },
+                    "last_name": {
+                        "last_name": "Dhillo"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "w.dhillo@imperial.ac.uk"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "Imperial College"
+                        },
+                        "dept": {
+                            "dept": "Investigative Medicine"
+                        },
+                        "addr1": {
+                            "addr1": "6th Floor Commonwealth Building"
+                        },
+                        "addr2": {
+                            "addr2": "Hammersmith Hospital"
+                        },
+                        "addr3": {
+                            "addr3": "Du Cane Road"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "W12 ONN"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Imperial College"
+                        },
+                        "dept": {
+                            "dept": "Investigative Medicine"
+                        },
+                        "addr1": {
+                            "addr1": "6th Floor Commonwealth Building"
+                        },
+                        "addr2": {
+                            "addr2": "Hammersmith Hospital"
+                        },
+                        "addr3": {
+                            "addr3": "Du Cane Road"
+                        },
+                        "city": {
+                            "city": "London"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "W12 ONN"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "82720667",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Juan"
+                    },
+                    "last_name": {
+                        "last_name": "Roa"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "b62rorij@uco.es"
+                    },
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192546",
+                                    "name": "Female reproduction",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192573",
+                                    "name": "Male reproduction",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192432",
+                                    "name": "Metabolism",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192577",
+                                    "name": "Obesity",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192479",
+                                    "name": "Ovarian function",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371080",
+                                "name": "No",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "University of Cordoba - Campus of Health Sciences"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "621936"
+                        },
+                        "addr1": {
+                            "addr1": "Menendez Pidal s/n"
+                        },
+                        "city": {
+                            "city": "Cordoba"
+                        },
+                        "country": {
+                            "country_code": "ES",
+                            "country": "Spain"
+                        },
+                        "post_code": {
+                            "post_code": "14004"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "University of Cordoba - Campus of Health Sciences"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "621936"
+                        },
+                        "addr1": {
+                            "addr1": "Menendez Pidal s/n"
+                        },
+                        "city": {
+                            "city": "Cordoba"
+                        },
+                        "country": {
+                            "country_code": "ES",
+                            "country": "Spain"
+                        },
+                        "post_code": {
+                            "post_code": "14004"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "13882197",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Morag"
+                    },
+                    "middle_name": {
+                        "middle_name": "J"
+                    },
+                    "last_name": {
+                        "last_name": "Young"
+                    },
+                    "degree": {
+                        "degree": "BSc Hons PhD"
+                    },
+                    "email": [
+                        {
+                            "addr_type": "primary",
+                            "email": "Morag.Young@baker.edu.au"
+                        },
+                        {
+                            "addr_type": "secondary",
+                            "email": "mjyoung@unimelb.edu.au"
+                        }
+                    ],
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192493",
+                                    "name": "Nuclear receptors",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192565",
+                                    "name": "Cardiovascular",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192472",
+                                    "name": "Steroid homones",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192450",
+                                    "name": "Adrenal hormones",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192455",
+                                    "name": "Adrenal cortex",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371079",
+                                "name": "Yes – keep me up to date",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "comments": {
+                        "comments": "Young, Morag, morag.young@princehnerys.org  merged with this user on 25-Feb-2009 by Jones, Laura"
+                    },
+                    "flags": {
+                        "flag": {
+                            "color": "White",
+                            "flag": "Editorial Board Member"
+                        }
+                    },
+                    "orcid": {
+                        "orcid": "0000-0003-0450-5375"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": [
+                        {
+                            "seq": "1",
+                            "inst": {
+                                "inst": "Baker Heart and Diabetes Institute"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "104284"
+                            },
+                            "dept": {
+                                "dept": "Cardiovascular Endocrinology"
+                            },
+                            "addr1": {
+                                "addr1": "75 Commerical Rd"
+                            },
+                            "addr2": {
+                                "addr2": "Prahran"
+                            },
+                            "city": {
+                                "city": "Melbourne"
+                            },
+                            "state": {
+                                "state": "Victoria"
+                            },
+                            "country": {
+                                "country_code": "AU",
+                                "country": "Australia"
+                            },
+                            "post_code": {
+                                "post_code": "3004"
+                            },
+                            "fax": {
+                                "fax": "@moragjyoung"
+                            }
+                        },
+                        {
+                            "seq": "2",
+                            "inst": {
+                                "inst": "The University of Melbourne Faculty of Medicine Dentistry and Health Sciences"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "85084"
+                            },
+                            "dept": {
+                                "dept": "The Baker Department of Cardiac and Metabolic Health and Disease"
+                            },
+                            "city": {
+                                "city": "Melbourne"
+                            },
+                            "state": {
+                                "state": "Victoria"
+                            },
+                            "country": {
+                                "country_code": "AU",
+                                "country": "Australia"
+                            },
+                            "post_code": {
+                                "post_code": "3010"
+                            }
+                        }
+                    ],
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Baker Heart and Diabetes Institute"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "104284"
+                        },
+                        "dept": {
+                            "dept": "Cardiovascular Endocrinology"
+                        },
+                        "addr1": {
+                            "addr1": "75 Commerical Rd"
+                        },
+                        "addr2": {
+                            "addr2": "Prahran"
+                        },
+                        "city": {
+                            "city": "Melbourne"
+                        },
+                        "state": {
+                            "state": "Victoria"
+                        },
+                        "country": {
+                            "country_code": "AU",
+                            "country": "Australia"
+                        },
+                        "post_code": {
+                            "post_code": "3004"
+                        },
+                        "fax": {
+                            "fax": "@moragjyoung"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "63191276",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Robert L."
+                    },
+                    "last_name": {
+                        "last_name": "Goodman"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "rgoodman@hsc.wvu.edu"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "W Virginia Univ"
+                        },
+                        "country": {
+                            "country_code": "US",
+                            "country": "United States"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "W Virginia Univ"
+                        },
+                        "country": {
+                            "country_code": "US",
+                            "country": "United States"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "106070457",
+                    "salutation": {
+                        "salutation": "Dr."
+                    },
+                    "first_name": {
+                        "first_name": "Aidan"
+                    },
+                    "last_name": {
+                        "last_name": "Surgey"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "aidan.surgey@bioscientifica.com"
+                    },
+                    "orcid": {
+                        "orcid": "0009-0008-4525-2582"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "Bioscientifica Ltd"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "271113"
+                        },
+                        "city": {
+                            "city": "Bristol"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "BS34 8YU"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Bioscientifica Ltd"
+                        },
+                        "institution_id": {
+                            "institution_id_type": "Ringgold",
+                            "institution_id": "271113"
+                        },
+                        "city": {
+                            "city": "Bristol"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "BS34 8YU"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "5270060",
+                    "salutation": {
+                        "salutation": "Prof."
+                    },
+                    "first_name": {
+                        "first_name": "Colin"
+                    },
+                    "last_name": {
+                        "last_name": "Farquharson"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "colin.farquharson@roslin.ed.ac.uk"
+                    },
+                    "attr_type": [
+                        {
+                            "id": "5640",
+                            "name": "Keywords",
+                            "attribute": [
+                                {
+                                    "id": "5192535",
+                                    "name": "Bone",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192438",
+                                    "name": "Growth hormone",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192580",
+                                    "name": "IGF",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192517",
+                                    "name": "IGF receptor",
+                                    "attribute": "selected"
+                                },
+                                {
+                                    "id": "5192552",
+                                    "name": "IGFBP-s",
+                                    "attribute": "selected"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "29912",
+                            "name": "DON'T MISS OUT!",
+                            "attribute": {
+                                "id": "84371080",
+                                "name": "No",
+                                "attribute": "selected"
+                            }
+                        }
+                    ],
+                    "flags": {
+                        "flag": {
+                            "color": "White",
+                            "flag": "Editorial Board Member"
+                        }
+                    },
+                    "orcid": {
+                        "orcid": "0000-0002-4970-4039"
+                    },
+                    "orcid_id_validation": {
+                        "orcid_id_validation": "TRUE"
+                    },
+                    "orcid_token_type": {
+                        "orcid_token_type": "bearer"
+                    },
+                    "orcid_token_scope": {
+                        "orcid_token_scope": "[/authenticate, /read-limited]"
+                    },
+                    "orcid_token_expires_in": {
+                        "orcid_token_expires_in": "631138518"
+                    },
+                    "affiliation": {
+                        "seq": "1",
+                        "inst": {
+                            "inst": "Roslin Institute"
+                        },
+                        "dept": {
+                            "dept": "Bone Biology Group"
+                        },
+                        "addr1": {
+                            "addr1": "Roslin"
+                        },
+                        "addr2": {
+                            "addr2": "Midlothian"
+                        },
+                        "city": {
+                            "city": "Edinburgh"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "EH25 9PS"
+                        },
+                        "phone": {
+                            "phone": "44 (0) 131 527 4399"
+                        },
+                        "fax": {
+                            "fax": "+44 (0) 131 440 0434"
+                        }
+                    },
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Roslin Institute"
+                        },
+                        "dept": {
+                            "dept": "Bone Biology Group"
+                        },
+                        "addr1": {
+                            "addr1": "Roslin"
+                        },
+                        "addr2": {
+                            "addr2": "Midlothian"
+                        },
+                        "city": {
+                            "city": "Edinburgh"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "EH25 9PS"
+                        },
+                        "phone": {
+                            "phone": "44 (0) 131 527 4399"
+                        },
+                        "fax": {
+                            "fax": "+44 (0) 131 440 0434"
+                        }
+                    }
+                },
+                {
+                    "contact": "false",
+                    "is_staff": "false",
+                    "submitter": "false",
+                    "submitting_agent": "false",
+                    "user_id": "3892644",
+                    "salutation": {
+                        "salutation": "Mr."
+                    },
+                    "first_name": {
+                        "first_name": "Aidan"
+                    },
+                    "last_name": {
+                        "last_name": "Surgey"
+                    },
+                    "email": {
+                        "addr_type": "primary",
+                        "email": "jme@bioscientifica.com"
+                    },
+                    "attr_type": {
+                        "id": "5640",
+                        "name": "Keywords",
+                        "attribute": [
+                            {
+                                "id": "5192482",
+                                "name": "Cytochrome P450-s",
+                                "attribute": "selected"
+                            },
+                            {
+                                "id": "5192515",
+                                "name": "Fish",
+                                "attribute": "selected"
+                            }
+                        ]
+                    },
+                    "affiliation": [
+                        {
+                            "seq": "1",
+                            "inst": {
+                                "inst": "Bioscientifica Ltd."
+                            },
+                            "addr1": {
+                                "addr1": "Starling House"
+                            },
+                            "addr2": {
+                                "addr2": "1600 Parkway North"
+                            },
+                            "city": {
+                                "city": "Bristol"
+                            },
+                            "country": {
+                                "country_code": "GB",
+                                "country": "United Kingdom of Great Britain and Northern Ireland"
+                            },
+                            "post_code": {
+                                "post_code": "BS34 8YU"
+                            },
+                            "phone": {
+                                "phone": "+44 (0) 1454 642228"
+                            }
+                        },
+                        {
+                            "seq": "2",
+                            "country": {
+                                "country_code": "GB",
+                                "country": "United Kingdom of Great Britain and Northern Ireland"
+                            }
+                        }
+                    ],
+                    "current_profile_affiliation": {
+                        "inst": {
+                            "inst": "Bioscientifica Ltd."
+                        },
+                        "addr1": {
+                            "addr1": "Starling House"
+                        },
+                        "addr2": {
+                            "addr2": "1600 Parkway North"
+                        },
+                        "city": {
+                            "city": "Bristol"
+                        },
+                        "country": {
+                            "country_code": "GB",
+                            "country": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "post_code": {
+                            "post_code": "BS34 8YU"
+                        },
+                        "phone": {
+                            "phone": "+44 (0) 1454 642228"
+                        }
+                    }
+                }
+            ]
+        },
+        "forms": {
+            "form": [
+                {
+                    "form_file_name": "457008867_108862110_1699377110090.pdf",
+                    "form_task_name": "Forms Completion Task",
+                    "form_submitted_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "11"
+                        },
+                        "day": {
+                            "day": "07"
+                        },
+                        "hour": {
+                            "hour": "12"
+                        },
+                        "minute": {
+                            "minute": "11"
+                        },
+                        "second": {
+                            "second": "50"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "form_submitter": {
+                        "salutation": {
+                            "salutation": "Dr."
+                        },
+                        "first_name": {
+                            "first_name": "Deyana"
+                        },
+                        "last_name": {
+                            "last_name": "Ivanova"
+                        },
+                        "email": {
+                            "addr_type": "primary",
+                            "email": "deyana.ivanova@yahoo.com"
+                        },
+                        "attr_type": [
+                            {
+                                "id": "5640",
+                                "name": "Keywords",
+                                "attribute": [
+                                    {
+                                        "id": "5192501",
+                                        "name": "Gonadotrophins",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192559",
+                                        "name": "Stress",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192518",
+                                        "name": "Neurotransmitters",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192546",
+                                        "name": "Female reproduction",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192443",
+                                        "name": "Hypothalamus and Neuroendocrinology",
+                                        "attribute": "selected"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "29912",
+                                "name": "DON'T MISS OUT!",
+                                "attribute": {
+                                    "id": "84371079",
+                                    "name": "Yes – keep me up to date",
+                                    "attribute": "selected"
+                                }
+                            }
+                        ],
+                        "orcid": {
+                            "orcid": "0000-0003-1508-166X"
+                        },
+                        "orcid_id_validation": {
+                            "orcid_id_validation": "TRUE"
+                        },
+                        "orcid_token_type": {
+                            "orcid_token_type": "bearer"
+                        },
+                        "orcid_token_scope": {
+                            "orcid_token_scope": "[/authenticate]"
+                        },
+                        "orcid_token_expires_in": {
+                            "orcid_token_expires_in": "631138518"
+                        },
+                        "affiliation": {
+                            "seq": "1",
+                            "inst": {
+                                "inst": "King's College London"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "4616"
+                            },
+                            "dept": {
+                                "dept": "Women and Children’s Health"
+                            },
+                            "addr1": {
+                                "addr1": "2.92W, Hodgkin Building"
+                            },
+                            "city": {
+                                "city": "London"
+                            },
+                            "country": {
+                                "country_code": "GB",
+                                "country": "United Kingdom of Great Britain and Northern Ireland"
+                            },
+                            "post_code": {
+                                "post_code": "SE1 1UL"
+                            }
+                        },
+                        "current_profile_affiliation": {
+                            "inst": {
+                                "inst": "King's College London"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "4616"
+                            },
+                            "dept": {
+                                "dept": "Women and Children’s Health"
+                            },
+                            "addr1": {
+                                "addr1": "2.92W, Hodgkin Building"
+                            },
+                            "city": {
+                                "city": "London"
+                            },
+                            "country": {
+                                "country_code": "GB",
+                                "country": "United Kingdom of Great Britain and Northern Ireland"
+                            },
+                            "post_code": {
+                                "post_code": "SE1 1UL"
+                            }
+                        }
+                    }
+                },
+                {
+                    "form_file_name": "457008867_108862110_1699377110090.pdf",
+                    "form_task_name": "Forms Completion Task",
+                    "form_submitted_date": {
+                        "year": {
+                            "year": "2023"
+                        },
+                        "month": {
+                            "month": "11"
+                        },
+                        "day": {
+                            "day": "07"
+                        },
+                        "hour": {
+                            "hour": "12"
+                        },
+                        "minute": {
+                            "minute": "11"
+                        },
+                        "second": {
+                            "second": "50"
+                        },
+                        "time_zone": {
+                            "time_zone": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    },
+                    "form_submitter": {
+                        "salutation": {
+                            "salutation": "Dr."
+                        },
+                        "first_name": {
+                            "first_name": "Deyana"
+                        },
+                        "last_name": {
+                            "last_name": "Ivanova"
+                        },
+                        "email": {
+                            "addr_type": "primary",
+                            "email": "deyana.ivanova@yahoo.com"
+                        },
+                        "attr_type": [
+                            {
+                                "id": "5640",
+                                "name": "Keywords",
+                                "attribute": [
+                                    {
+                                        "id": "5192501",
+                                        "name": "Gonadotrophins",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192559",
+                                        "name": "Stress",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192518",
+                                        "name": "Neurotransmitters",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192546",
+                                        "name": "Female reproduction",
+                                        "attribute": "selected"
+                                    },
+                                    {
+                                        "id": "5192443",
+                                        "name": "Hypothalamus and Neuroendocrinology",
+                                        "attribute": "selected"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "29912",
+                                "name": "DON'T MISS OUT!",
+                                "attribute": {
+                                    "id": "84371079",
+                                    "name": "Yes – keep me up to date",
+                                    "attribute": "selected"
+                                }
+                            }
+                        ],
+                        "orcid": {
+                            "orcid": "0000-0003-1508-166X"
+                        },
+                        "orcid_id_validation": {
+                            "orcid_id_validation": "TRUE"
+                        },
+                        "orcid_token_type": {
+                            "orcid_token_type": "bearer"
+                        },
+                        "orcid_token_scope": {
+                            "orcid_token_scope": "[/authenticate]"
+                        },
+                        "orcid_token_expires_in": {
+                            "orcid_token_expires_in": "631138518"
+                        },
+                        "affiliation": {
+                            "seq": "1",
+                            "inst": {
+                                "inst": "King's College London"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "4616"
+                            },
+                            "dept": {
+                                "dept": "Women and Children’s Health"
+                            },
+                            "addr1": {
+                                "addr1": "2.92W, Hodgkin Building"
+                            },
+                            "city": {
+                                "city": "London"
+                            },
+                            "country": {
+                                "country_code": "GB",
+                                "country": "United Kingdom of Great Britain and Northern Ireland"
+                            },
+                            "post_code": {
+                                "post_code": "SE1 1UL"
+                            }
+                        },
+                        "current_profile_affiliation": {
+                            "inst": {
+                                "inst": "King's College London"
+                            },
+                            "institution_id": {
+                                "institution_id_type": "Ringgold",
+                                "institution_id": "4616"
+                            },
+                            "dept": {
+                                "dept": "Women and Children’s Health"
+                            },
+                            "addr1": {
+                                "addr1": "2.92W, Hodgkin Building"
+                            },
+                            "city": {
+                                "city": "London"
+                            },
+                            "country": {
+                                "country_code": "GB",
+                                "country": "United Kingdom of Great Britain and Northern Ireland"
+                            },
+                            "post_code": {
+                                "post_code": "SE1 1UL"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "fundref_information": {
+            "no_funders": {
+                "no_funders": "False"
+            },
+            "funder": {
+                "preferred_label": {
+                    "preferred_label": "Biotechnology and Biological Sciences Research Council"
+                },
+                "concept_id": {
+                    "concept_id": "http://dx.doi.org/10.13039/501100000268"
+                },
+                "grant_number": {
+                    "grant_number": "BB/W005913/1"
+                }
+            }
+        },
+        "publication_model": {
+            "publication_model": "None"
+        }
+    }
+}

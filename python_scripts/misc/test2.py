@@ -1,6 +1,8 @@
 """ Module for converting docx to xml for element prediction"""
 import os
 import re
+import uuid
+import logging
 from collections import Counter
 import docx
 import docx.package
@@ -17,11 +19,20 @@ from docx.oxml.ns import nsmap
 from lxml import etree
 import pandas as pd
 
+# define info log
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S')
+
+# health check 
 def health_check():
     """Function to perform a health check (Used for testing that the package gets loaded)"""
     output_str = "Health Check OK"
     return output_str
 
+
+# extract docx properties
 def extract_docx_properties(docx_path):
     """ Function to create an XML document that can be passed to Element Prediction
     Args:
@@ -29,7 +40,8 @@ def extract_docx_properties(docx_path):
     Returns:
         [str]: An xml formatted string that contains extracted properties from the docx
     """
-
+    # invoke create_document_object() to create document obj
+    logging.info('Started creating the docx object')
     document, numbering_pd, theme_dict = create_document_object(docx_path)
 
     # Default value, empty string
@@ -37,20 +49,22 @@ def extract_docx_properties(docx_path):
     # Create list that will hold all the properties which should be treated as CDATA
     c_data_tags = ["ParaContent"]
     # Create a list of dictionaries with the properties of each paragraph
+    logging.info('Extracting the properties of the document')
     para_properties_list = extract_properties_to_list(
         document,
         numbering_pd,
-        theme_dict
-    )
+        theme_dict)
+
+    logging.info('Writing the extracted properties into XML')
     # Convert list of dictionaries to an XML string
     para_properties_xml = create_structured_xml(
         para_properties_list,
-        c_data_tags
-    )
+        c_data_tags)
 
     return para_properties_xml
 
 
+# create document object
 def create_document_object(docx_path):
     """ Function to create a python-docx Document object
     Args:
@@ -84,6 +98,8 @@ def create_document_object(docx_path):
 
     return document, numbering_pd, theme_dict
 
+
+# create numbering pd
 def create_numbering_pd(numbering_part):
     """ Function to create a Pandas Dataframe representing the numbering.xml file in a docx
     Args:
@@ -97,57 +113,60 @@ def create_numbering_pd(numbering_part):
     abstract_num_list = []
 
     # Loop through each part of numbering.xml
-    for num in numbering_part._element:
-        # The abstractNum part
-        if not isinstance(num, CT_Num):
-            # Loop through each child, adding value to a dict
-            for abstract_element in num.iterchildren():
-                abstract_num_dict = {
-                    "abstract_num_id" : num.get(namespace + "abstractNumId")
-                }
-                # Get MultilevelType
-                if abstract_element.tag == (namespace + "multiLevelType"):
-                    abstract_num_dict["multi_level_type"] = abstract_element.get(namespace + "val")
-                if abstract_element.tag == (namespace + "lvl"):
-                    # Add Dictionary for level based info
-                    abstract_num_level_dict = abstract_num_dict
-                    abstract_num_level_dict["level"] = abstract_element.get(namespace + "ilvl")
+    if numbering_part._element.getchildren():
+        for num in numbering_part._element:
+            # The abstractNum part
+            if not isinstance(num, CT_Num):
+                # Loop through each child, adding value to a dict
+                for abstract_element in num.iterchildren():
+                    abstract_num_dict = {
+                        "abstract_num_id" : num.get(namespace + "abstractNumId")
+                    }
+                    # Get MultilevelType
+                    if abstract_element.tag == (namespace + "multiLevelType"):
+                        abstract_num_dict["multi_level_type"] = abstract_element.get(namespace + "val")
+                    if abstract_element.tag == (namespace + "lvl"):
+                        # Add Dictionary for level based info
+                        abstract_num_level_dict = abstract_num_dict
+                        abstract_num_level_dict["level"] = abstract_element.get(namespace + "ilvl")
 
-                    for level_element in abstract_element.iterchildren():
-                        if level_element.tag == (namespace + "start"):
-                            abstract_num_level_dict["level_start"] = level_element.get(namespace + "val")
-                        if level_element.tag == (namespace + "numFmt"):
-                            abstract_num_level_dict["level_num_format"] = level_element.get(namespace + "val")
-                        if level_element.tag == (namespace + "lvlText"):
-                            abstract_num_level_dict["level_text"] = level_element.get(namespace + "val")
-                        if level_element.tag == (namespace + "pPr"):
-                            for level_para_prop_element in level_element.iterchildren():
-                                if level_para_prop_element.tag == (namespace + "ind"):
-                                    abstract_num_level_dict["level_para_prop_left"] = level_para_prop_element.get(namespace + "left")
-                                    abstract_num_level_dict["level_para_prop_hanging"] = level_para_prop_element.get(namespace + "hanging")
-                    abstract_num_list.append(abstract_num_level_dict)
-        else:
-            # The numID part that is in document.xml
-            num_dict = {
-                "num_id" : num.get(namespace + "numId"),
-                "abstract_num_id" : str(num.abstractNumId.val)
-            }
-            num_list.append(num_dict)
+                        for level_element in abstract_element.iterchildren():
+                            if level_element.tag == (namespace + "start"):
+                                abstract_num_level_dict["level_start"] = level_element.get(namespace + "val")
+                            if level_element.tag == (namespace + "numFmt"):
+                                abstract_num_level_dict["level_num_format"] = level_element.get(namespace + "val")
+                            if level_element.tag == (namespace + "lvlText"):
+                                abstract_num_level_dict["level_text"] = level_element.get(namespace + "val")
+                            if level_element.tag == (namespace + "pPr"):
+                                for level_para_prop_element in level_element.iterchildren():
+                                    if level_para_prop_element.tag == (namespace + "ind"):
+                                        abstract_num_level_dict["level_para_prop_left"] = level_para_prop_element.get(namespace + "left")
+                                        abstract_num_level_dict["level_para_prop_hanging"] = level_para_prop_element.get(namespace + "hanging")
+                        abstract_num_list.append(abstract_num_level_dict)
+            else:
+                # The numID part that is in document.xml
+                num_dict = {
+                    "num_id" : num.get(namespace + "numId"),
+                    "abstract_num_id" : str(num.abstractNumId.val)}
+                # append into num_list
+                num_list.append(num_dict)
 
     # Convert Lists to DataFrame
-    num_id_pd = pd.DataFrame(num_list)
-    abstract_num_pd = pd.DataFrame(abstract_num_list)
+    if num_list:
+        num_id_pd = pd.DataFrame(num_list)
+        abstract_num_pd = pd.DataFrame(abstract_num_list)
 
     # Merge into a single Data Frame
-    numbering_pd = pd.merge(
-        num_id_pd,
-        abstract_num_pd,
-        how = "left",
-        on = "abstract_num_id"
-    )
+        numbering_pd = pd.merge(
+            num_id_pd,
+            abstract_num_pd,
+            how = "left",
+            on = "abstract_num_id")
 
-    return numbering_pd
+        return numbering_pd
 
+
+# get data from numbering pd
 def get_data_from_numbering_pd(numbering_pd, num_id, level, column):
     """ Function return spacific data from the numbering_pd DataFrame
     Args:
@@ -162,8 +181,9 @@ def get_data_from_numbering_pd(numbering_pd, num_id, level, column):
     """
 
     output = ""
-
+    # check if numbering_pd is not defined
     if not numbering_pd is None:
+        # check if it is not empty if its defined
         if len(numbering_pd.index) > 0 and \
             column in numbering_pd.columns and \
             int(num_id) >= 0:
@@ -171,11 +191,12 @@ def get_data_from_numbering_pd(numbering_pd, num_id, level, column):
             numbering_filtered = numbering_pd[numbering_pd.num_id == num_id]
             if int(level) > 0:
                 numbering_filtered = numbering_filtered[numbering_filtered.level == level]
-
-            output = numbering_filtered[column].to_list()[0]
+                output = numbering_filtered[column].to_list()[0]
 
     return output
 
+
+# get fonts found into theme xml into docx 
 def get_theme_data(docx_package):
     """ Function to create a dictionary containing the major and minor fonts found in theme.xml
     Args:
@@ -187,7 +208,6 @@ def get_theme_data(docx_package):
         "major_font" : "",
         "minor_font" : ""
     }
-
     # Iterate through each of the parts in the docx package
     for part in docx_package.parts:
         if part.partname.startswith("/word/theme/"):
@@ -203,13 +223,17 @@ def get_theme_data(docx_package):
 
     return output
 
-""" Function to iterate through paragraphs of a document and return each paragraph in a list
-    Input:
-    - document: python-docx document object, see create_document_object
-    Output:
-    - para_properties_list: A list containing dictionaries which contain properties of the paragraph
-    """
 
+""" 
+Function to iterate through paragraphs of a document and return each paragraph in a list
+Input:
+- document: python-docx document object, see create_document_object
+Output:
+- para_properties_list: A list containing dictionaries which contain properties of the paragraph
+"""
+
+
+# extract docx properties into list
 def extract_properties_to_list(document, numbering_pd, theme_dict):
     """ Function to iterate through paragraphs of a document, extract relevant information
         about the paragraph, store as a dictionary, and append to a list
@@ -223,7 +247,7 @@ def extract_properties_to_list(document, numbering_pd, theme_dict):
 
     block_id = 1
     document_properties_list = []
-
+    logging.info('Started processing the components to extract the properties')
     for document_block in iter_block_items(document):
         # Check to see if the paragraph has a text box
         para_contains_text_box = para_contains_xpath(
@@ -246,20 +270,21 @@ def extract_properties_to_list(document, numbering_pd, theme_dict):
         ######## Table ###########
         ##########################
         if isinstance(document_block, Table):
+            pass
             # Iterate through the rows, cells and paragraphs in the table
-            for table_row in document_block.rows:
-                for cell in table_row.cells:
-                    for para in cell.paragraphs:
-                        # Uncommented this line to exclude any paragraphs with blank or only new lines
-                        document_properties_list.append(create_paragraph_properties(
-                            document,
-                            para,
-                            block_id,
-                            block_type = "table_cell_paragraph",
-                            numbering_pd = numbering_pd,
-                            theme_dict = theme_dict))
+            # for table_row in document_block.rows:
+            #     for cell in table_row.cells:
+            #         for para in cell.paragraphs:
+            #             # Uncommented this line to exclude any paragraphs with blank or only new lines
+            #             document_properties_list.append(create_paragraph_properties(
+            #                 document,
+            #                 para,
+            #                 block_id,
+            #                 block_type = "table_cell_paragraph",
+            #                 numbering_pd = numbering_pd,
+            #                 theme_dict = theme_dict))
 
-                        block_id += 1
+            #             block_id += 1
 
         # Check to see if the current block is a paragraph and contains textbox
         elif isinstance(document_block, Paragraph) and para_contains_text_box:
@@ -314,6 +339,8 @@ def extract_properties_to_list(document, numbering_pd, theme_dict):
 
     return document_properties_list
 
+
+# iterate over document
 def iter_block_items(parent):
     """
     Yield each paragraph and table child within *parent*, in document
@@ -336,6 +363,7 @@ def iter_block_items(parent):
             yield Table(child, parent)
 
 
+# check if pata contains specified xpath
 def para_contains_xpath(para, xpath_string):
     """ Function to check if an XML block contains a certain xpath query
     Args:
@@ -353,6 +381,8 @@ def para_contains_xpath(para, xpath_string):
 
     return len(xml_value) > 0
 
+
+# create paragraph properties
 def create_paragraph_properties(document, para, para_id, block_type, numbering_pd, theme_dict):
     """ Function to create a paragraph properties dictionary
     Args:
@@ -371,6 +401,7 @@ def create_paragraph_properties(document, para, para_id, block_type, numbering_p
     para_prop_dict = {}
     para_prop_dict["ParaID"] = para_id
     para_prop_dict["ParaObjectType"] = block_type
+    para_prop_dict["ParaHexId"]=retreive_para_hex_id(para)
     para_prop_dict["ParaCleanedContent"] = transform_para_content(get_para_content(para))
     para_prop_dict["ParaContent"] = get_para_content(para)
     para_prop_dict["ParaContentTabStart"] = get_para_content_tab_start_count(para)
@@ -399,12 +430,14 @@ def create_paragraph_properties(document, para, para_id, block_type, numbering_p
 
     return para_prop_dict
 
-def get_xml_attribute(para,
-                      tag_to_find,
-                      tag_parent,
-                      tag_attribute,
-                      default_value = 0
-                     ):
+
+# get xml attribute
+def get_xml_attribute(
+    para,
+    tag_to_find,
+    tag_parent,
+    tag_attribute,
+    default_value = 0):
     """ Function to retrieve an xml attribute for a given tag and parent tag
     Args:
         para (python-docx paragraph object): Python-docx paragraph object
@@ -435,6 +468,29 @@ def get_xml_attribute(para,
 
     return attribute_value
 
+
+# retrieve para hex id
+def retreive_para_hex_id(para):
+    """Function to generate random hex id for each paras.
+
+    Args:
+        para (docx obj): docx.Document obj.
+
+    Returns:
+        Generated para ID.
+    """
+    # define wordml xpath
+    word14_namespace_ml = "{http://schemas.microsoft.com/office/word/2010/wordml}"
+    # generate para ID into input_doc
+    if (len(para._p.xpath("@w14:paraId")) < 1):
+        para._p.set(
+            word14_namespace_ml + "paraId", gen_id())
+        return para._p.xpath("@w14:paraId")[0]
+    else:
+        return para._p.xpath("@w14:paraId")[0]
+
+
+# get para content
 def get_para_content(para):
     """ Function to retrieve the paragraph content across all runs
     Input:
@@ -450,6 +506,8 @@ def get_para_content(para):
 
     return para_content
 
+
+# transform para contents
 def transform_para_content(para_content):
     """ Function to transform raw paragraph content into a cleaned version
     Input:
@@ -465,6 +523,8 @@ def transform_para_content(para_content):
 
     return para_content_transformed
 
+
+# get number of tab characters ar start of a str of paragraphs
 def get_para_content_tab_start_count(para):
     """ Function to count the number of tab characters at the start of a string of paragraph of text
     Args:
@@ -473,16 +533,21 @@ def get_para_content_tab_start_count(para):
         [int]: The number of tab characters at the start of a paragraph of text, default to 0
     """
     output = 0
-    if len(para.text) > 0:
-        i = 0
-        while True:
-            if para.text[i] == "\t" and i < len(para.text):
-                i += 1
-            else:
-                break
-        output = i
-    return output
+    try:
+        if len(para.text) > 0:
+            i = 0
+            while True:
+                if para.text[i] == "\t" and i < len(para.text):
+                    i += 1
+                else:
+                    break
+            output = i
+        return output
+    except Exception as error:
+        print(f"Error occured while taking the tab start count: {error}")
 
+
+# get para font family
 def get_para_font_family(document, para, theme_dict):
     """ Function to retrieve the font family for a specific paragraph, the run is
         also included to check for any run specific fonts
@@ -493,62 +558,68 @@ def get_para_font_family(document, para, theme_dict):
     Returns:
         [str]: The font family identified for the paragraph
     """
+    try:
+        # Set the default font_family to be Word default of Calibir
+        font_family = "Default"
+        # Check to esnure the paragraph object is not None
+        if not para is None:
+            # Direct font family name for the run and style values for the run
+            run_font_values = []
+            run_style_font_values = []
+            # Iterate through each run to populate the two above lists
+            for run in para.runs:
+                if not run.text == "" and not run.text == "\n":
+                    run_font_values.append(run.font.name)
+                    if run.style is not None:
+                        run_style_font_values.append(run.style.font.name)
 
-    # Set the default font_family to be Word default of Calibir
-    font_family = "Default"
-    # Check to esnure the paragraph object is not None
-    if not para is None:
-        # Direct font family name for the run and style values for the run
-        run_font_values = []
-        run_style_font_values = []
-        # Iterate through each run to populate the two above lists
-        for run in para.runs:
-            if not run.text == "" and not run.text == "\n":
-                run_font_values.append(run.font.name)
-                run_style_font_values.append(run.style.font.name)
+            # Check the paragraph style font family name
+            para_style_font_name = para.style.font.name
 
-        # Check the paragraph style font family name
-        para_style_font_name = para.style.font.name
+            # Identify the paragraph style
+            para_style = get_para_style(para)
+            # Check the style from the document styles
+            if para_style is not None:
+                document_para_style = document.styles[para_style].font.name
 
-        # Identify the paragraph style
-        para_style = get_para_style(para)
-        # Check the style from the document styles
-        document_para_style = document.styles[para_style].font.name
-
-        # Check the theme_dict for a font at theme level
-        theme_font = None
-        if para_style.lower().find("heading") >= 0 and "major_font" in theme_dict.keys():
-            theme_font = theme_dict.get("major_font")
-        elif para_style.lower().find("heading") < 0 and "minor_font" in theme_dict.keys():
-            theme_font = theme_dict.get("minor_font")
+                # Check the theme_dict for a font at theme level
+                theme_font = None
+                if para_style.lower().find("heading") >= 0 and "major_font" in theme_dict.keys():
+                    theme_font = theme_dict.get("major_font")
+                elif para_style.lower().find("heading") < 0 and "minor_font" in theme_dict.keys():
+                    theme_font = theme_dict.get("minor_font")
 
 
-        # Check which of the above variables should be used, based on the following logic
-        # - The font directly applied to the paragraph
-        # - The font for any style applied to the paragraph
-        # - The majority font for any style applied to the runs within the paragraph
-        # - The majority font directly applied to any run within the paragraph
-        # - The Major/Minor Font used in theme.xml, depending on the heading
-        if para_style_font_name is None:
-            if document_para_style is None:
-                # Condition to check if all values are None in the list
-                if all(run_font_value is None for run_font_value in run_style_font_values):
-                    if all(run_font_value is None for run_font_value in run_font_values):
-                        if not theme_font is None:
-                            font_family = theme_font
+            # Check which of the above variables should be used, based on the following logic
+            # - The font directly applied to the paragraph
+            # - The font for any style applied to the paragraph
+            # - The majority font for any style applied to the runs within the paragraph
+            # - The majority font directly applied to any run within the paragraph
+            # - The Major/Minor Font used in theme.xml, depending on the heading
+            if para_style_font_name is None:
+                if document_para_style is None:
+                    # Condition to check if all values are None in the list
+                    if all(run_font_value is None for run_font_value in run_style_font_values):
+                        if all(run_font_value is None for run_font_value in run_font_values):
+                            if not theme_font is None:
+                                font_family = theme_font
+                        else:
+                            run_values_counter = Counter(run_font_values)
+                            font_family = run_values_counter.most_common(1)[0][0]
                     else:
-                        run_values_counter = Counter(run_font_values)
+                        run_values_counter = Counter(run_style_font_values)
                         font_family = run_values_counter.most_common(1)[0][0]
                 else:
-                    run_values_counter = Counter(run_style_font_values)
-                    font_family = run_values_counter.most_common(1)[0][0]
+                    font_family = document_para_style
             else:
-                font_family = document_para_style
-        else:
-            font_family = para_style_font_name
+                font_family = para_style_font_name
 
-    return font_family
+        return font_family
+    except Exception as error:
+        print(f"Error while fetching the para font family information: {error}")
 
+
+# check if para is bold
 def get_para_bold(document, para):
     """ Function to identify if a paragraph contains bold content
     Input:
@@ -557,42 +628,47 @@ def get_para_bold(document, para):
     Output
     - is_bold: Boolean indicating if the paragraph is bold
     """
-    # Default is False (not bold)
-    is_bold = False
-    # Check to see if the para object is None
-    if not para is None:
-        # Create a list to store the bold values for each of the runs
-        run_values = []
-        for run in para.runs:
-            if not run.bold is None:
-                run_values.append(run.bold)
+    try:
+        # Default is False (not bold)
+        is_bold = False
+        # Check to see if the para object is None
+        if not para is None:
+            # Create a list to store the bold values for each of the runs
+            run_values = []
+            for run in para.runs:
+                if not run.bold is None:
+                    run_values.append(run.bold)
 
 
-        # Check paragraph style
-        para_bold = para.style.font.bold
+            # Check paragraph style
+            para_bold = para.style.font.bold
 
-        # Check document style
-        para_style = get_para_style(para)
-        # Check the style from the document styles
-        document_style_bold = document.styles[para_style].font.bold
+            # Check document style
+            document_style_bold = None
+            para_style = get_para_style(para)
+            # Check the style from the document styles
+            if para_style is not None:
+                document_style_bold = document.styles[para_style].font.bold
 
-        # Update is_bold variable based on the following logic:
-        # - check if the paragraph style is bold
-        # - Check the default value for the paragraph style at document level
-        # - check if all runs are bold, if they are assign is_bold to True
-        if para_bold is None:
-            if document_style_bold is None:
-                if len(run_values) > 0:
-                    if all(run_bold is True for run_bold in run_values):
-                        is_bold = True
+            # Update is_bold variable based on the following logic:
+            # - check if the paragraph style is bold
+            # - Check the default value for the paragraph style at document level
+            # - check if all runs are bold, if they are assign is_bold to True
+            if para_bold is None:
+                if document_style_bold is None:
+                    if len(run_values) > 0:
+                        if all(run_bold is True for run_bold in run_values):
+                            is_bold = True
+                else:
+                    is_bold = document_style_bold
             else:
-                is_bold = document_style_bold
-        else:
-            is_bold = para_bold
+                is_bold = para_bold
 
-    return is_bold
+        return is_bold
+    except Exception as error:
+        print(f"Error while fetching the bold information from para: {error}")
 
-
+# check if para is italic
 def get_para_italic(document, para):
     """ Function to identify if a paragraph contains italic content
     Input:
@@ -601,41 +677,53 @@ def get_para_italic(document, para):
     Output
     - is_italic: Boolean indicating if the paragraph is italic
     """
-    # Default is False (not italic)
-    is_italic = False
-    # Check to see if the para object is None
-    if not para is None:
-        # Create a list to store the italic values for each of the runs
-        run_values = []
-        for run in para.runs:
-            if not run.italic is None:
-                run_values.append(run.italic)
+    try:
+        # Default is False (not italic)
+        is_italic = False
+        full_run_complete = True
+        # Check to see if the para object is None
+        if not para is None:
+            # Create a list to store the italic values for each of the runs
+            run_values = []
+            for run in para.runs:
+                if not run.italic is None:
+                    run_values.append(run.italic)
+                else:
+                    full_run_complete = False
+                    break
 
 
-        # Check paragraph style
-        para_italic = para.style.font.italic
+            # Check paragraph style
+            para_italic = para.style.font.italic
 
-        # Check document style
-        para_style = get_para_style(para)
-        # Check the style from the document styles
-        document_style_italic = document.styles[para_style].font.italic
+            # Check document style
+            document_style_italic = None
+            para_style = get_para_style(para)
+            # Check the style from the document styles
+            if para_style is not None:
+                document_style_italic = document.styles[para_style].font.italic
 
-        # Update is_italic variable based on the following logic:
-        # - check if the paragraph style is italic
-        # - Check the default value for the paragraph style at document level
-        # - check if all runs are italic, if they are assign is_italic to True
-        if para_italic is None:
-            if document_style_italic is None:
-                if len(run_values) > 0:
-                    if all(run is True for run in run_values):
-                        is_italic = True
+            # Update is_italic variable based on the following logic:
+            # - check if the paragraph style is italic
+            # - Check the default value for the paragraph style at document level
+            # - check if all runs are italic, if they are assign is_italic to True
+            if para_italic is None:
+                if document_style_italic is None:
+                    if len(run_values) > 0 and full_run_complete:
+                        if all(run is True for run in run_values):
+                            is_italic = True
+                else:
+                    is_italic = document_style_italic
             else:
-                is_italic = document_style_italic
-        else:
-            is_italic = para_italic
+                is_italic = para_italic
 
-    return is_italic
+        return is_italic
+    except Exception as error:
+        print(f"Error while fetching the italic information from para: {error}")
 
+
+
+# get para font size 
 def get_para_font_size(document, para):
     """ Function to retrieve the font size for a paragraph based on the style hierarchy
     Input:
@@ -644,53 +732,61 @@ def get_para_font_size(document, para):
     Output:
     - font_size: Number indicating the font size, default to 11 - Word default font size
     """
-    # Default font size to be 11
-    font_size = 11
-    if not document is None and not para is None:
-        ## Gather all the raw data, follow style hierarchy as defined by
-        #https://stackoverflow.com/questions/64031644/how-to-get-a-style-value-by-traversing
-        #-from-bottom-run-to-top-docdefaults
+    try:
+        # Default font size to be 11
+        font_size = 11
+        if not document is None and not para is None:
+            ## Gather all the raw data, follow style hierarchy as defined by
+            #https://stackoverflow.com/questions/64031644/how-to-get-a-style-value-by-traversing
+            #-from-bottom-run-to-top-docdefaults
 
-        # Direct font values for the run and style values for the run
-        run_font_values = []
-        run_style_font_values = []
-        # Iterate through each run to populate the two above lists
-        for run in para.runs:
-            if not run.text == "" and not run.text == "\n":
-                run_font_values.append(run.font.size)
-                run_style_font_values.append(run.style.font.size)
-        # Check the font size from the paragraph style
-        paragraph_style_size = para.style.font.size
+            # Direct font values for the run and style values for the run
+            run_font_values = []
+            run_style_font_values = []
+            # Iterate through each run to populate the two above lists
+            for run in para.runs:
+                if not run.text == "" and not run.text == "\n":
+                    run_font_values.append(run.font.size)
+                    if run.style is not None:
+                        run_style_font_values.append(run.style.font.size)
+            # Check the font size from the paragraph style
+            paragraph_style_size = para.style.font.size
 
-        # Identify the paragraph style
-        para_style = get_para_style(para)
-        # Check the style from the document styles
-        document_para_style = document.styles[para_style].font.size
+            # Identify the paragraph style
+            document_para_style = None
+            para_style = get_para_style(para)
+            # Check the style from the document styles
+            if para_style is not None:
+                document_para_style = document.styles[para_style].font.size
 
-        # Check if all the run font values are None
-        if all(run is None for run in run_font_values):
-            # Check if all the run style font values are None
-            if all(run is None for run in run_style_font_values):
-                # Check if the paragraph style is none
-                if paragraph_style_size is None:
-                    # Check if the style as defined in styles.xml has a size
-                    if not document_para_style is None:
-                        font_size = document_para_style.pt
+            # Check if all the run font values are None
+            if all(run is None for run in run_font_values):
+                # Check if all the run style font values are None
+                if all(run is None for run in run_style_font_values):
+                    # Check if the paragraph style is none
+                    if paragraph_style_size is None:
+                        # Check if the style as defined in styles.xml has a size
+                        if not document_para_style is None:
+                            font_size = document_para_style.pt
+                    else:
+                        font_size = paragraph_style_size.pt
                 else:
-                    font_size = paragraph_style_size.pt
+                    # Get unique set of font sizes identified in the run
+                    font_sizes = [font_size for font_size in run_style_font_values
+                                    if not font_size is None]
+                    if font_sizes:
+                        font_size = font_sizes[0].pt
             else:
                 # Get unique set of font sizes identified in the run
-                font_sizes = [font_size for font_size in run_style_font_values
-                              if not font_size is None]
-                font_size = font_sizes[0].pt
-        else:
-            # Get unique set of font sizes identified in the run
-            font_sizes = [font_size for font_size in run_font_values if not font_size is None]
-            font_size = font_sizes[0].pt
+                font_sizes = [font_size for font_size in run_font_values if not font_size is None]
+                if font_sizes:
+                    font_size = font_sizes[0].pt
 
-    return font_size
+        return font_size
+    except Exception as error:
+        print(f"Error while fetching the font size information from para: {error}")
 
-
+# get para style
 def get_para_style(para):
     """ Function to retrieve the font paragraph style for a paragraph based on the style hierarchy
     Input:
@@ -702,55 +798,66 @@ def get_para_style(para):
     para_style = "Normal"
 
     # Check the para style object
-    if not para.style.name is None:
+    if not para.style is None:
         para_style = para.style.name
 
     return para_style
 
 
+# get para list style 
 def get_para_list_style(document, para, numbering_pd):
     """ Function to return the paragraph list style, default to '' for now """
-    para_list_style = ""
+    try:
+        para_list_style = ""
+        document_pPr = None
 
-    # Retrieve the paragraph style
-    para_style = get_para_style(para)
+        # Retrieve the paragraph style
+        para_style = get_para_style(para)
 
-    # Get any paragraph properties associated with the paragraph, either at the style
-    # or paragraph level
-    document_pPr = document.styles[para_style]._element.pPr
-    para_pPr = para._p.pPr
+        # Get any paragraph properties associated with the paragraph, either at the style
+        # or paragraph level
+        if para_style is not None:
+            document_pPr = document.styles[para_style]._element.pPr
+        para_pPr = para._p.pPr
 
-    num_id = -1
-    level = 0
-    # Check the paragraph level first
-    # Extract out the number id for the list
-    if not para_pPr is None:
-        if not para_pPr.numPr is None:
-            num_id = str(para_pPr.numPr.numId.val)
-            # Identify the Level, if any
-            if not para_pPr.numPr.ilvl is None:
-                level = str(para_pPr.numPr.ilvl.val)
-
-        elif not document_pPr is None:
-            if not document_pPr.numPr is None:
-                num_id = str(document_pPr.numPr.numId.val)
+        num_id = -1
+        level = 0
+        # Check the paragraph level first
+        # Extract out the number id for the list
+        if not para_pPr is None:
+            if not para_pPr.numPr is None:
+                num_id = str(para_pPr.numPr.numId.val)
                 # Identify the Level, if any
-                if not document_pPr.numPr.ilvl is None:
-                    level = str(document_pPr.numPr.ilvl.val)
+                if not para_pPr.numPr.ilvl is None:
+                    level = str(para_pPr.numPr.ilvl.val)
+
+            elif not document_pPr is None:
+                if not document_pPr.numPr is None:
+                    num_id = str(document_pPr.numPr.numId.val)
+                    # Identify the Level, if any
+                    if not document_pPr.numPr.ilvl is None:
+                        level = str(document_pPr.numPr.ilvl.val)
 
 
-    # Identify the paragraph list style from the numbering_pd DataFrame
-    numbering_para_list_style = get_data_from_numbering_pd(
-        numbering_pd,
-        num_id, level,
-        column = "level_num_format"
-    )
+        # Identify the paragraph list style from the numbering_pd DataFrame
+        numbering_para_list_style = get_data_from_numbering_pd(
+            numbering_pd,
+            num_id, level,
+            column = "level_num_format"
+        )
 
-    if len(numbering_para_list_style) > 0:
+        # if len(numbering_para_list_style) > 0:
+        #     para_list_style = numbering_para_list_style
+        
+        #######  this is for testing the project 500200 #####
+        # if len(str(numbering_para_list_style)) > 0:
         para_list_style = numbering_para_list_style
 
-    return para_list_style
+        return para_list_style
+    except Exception as error:
+        print(f"Error while fetching the list style information from para: {error}")
 
+# get para left indentation
 def get_para_left_indent(document, para, numbering_pd):
     """ Function to find the left indent for a paragraph, default to 0
     Input:
@@ -759,34 +866,41 @@ def get_para_left_indent(document, para, numbering_pd):
     Output:
     - para_left_indent: Number indicating the left indent
     """
-    para_left_indent = 0
+    try:
+        para_left_indent = 0
+        document_para_style = None
+        document_pPr = None
+        # Get the paragraph style
+        para_style = get_para_style(para)
+        # Check the style from the document styles
+        if para_style is not None:
+            document_para_style = document.styles[para_style].paragraph_format.left_indent
+        # Check for numbering.xml when lists are used in Document
+            document_pPr = document.styles[para_style]._element.pPr
+        para_pPr = para._p.pPr
 
-    # Get the paragraph style
-    para_style = get_para_style(para)
-    # Check the style from the document styles
-    document_para_style = document.styles[para_style].paragraph_format.left_indent
-    # Check for numbering.xml when lists are used in Document
-    document_pPr = document.styles[para_style]._element.pPr
-    para_pPr = para._p.pPr
+        numbering_left_indent = get_left_indent_from_numbering_pd(
+            numbering_pd, document_pPr, para_pPr
+        )
 
-    numbering_left_indent = get_left_indent_from_numbering_pd(
-        numbering_pd, document_pPr, para_pPr
-    )
+        if not para is None:
+            if not para.paragraph_format.left_indent is None:
+                para_left_indent = para.paragraph_format.left_indent.pt
+                if not numbering_left_indent is None:
+                    para_left_indent -= numbering_left_indent
+            elif not para.style.paragraph_format.left_indent is None:
+                para_left_indent = para.style.paragraph_format.left_indent.pt
+            elif not document_para_style is None:
+                para_left_indent = document.styles[para_style].paragraph_format.left_indent.pt
+            elif not numbering_left_indent is None:
+                para_left_indent = numbering_left_indent
 
-    if not para is None:
-        if not para.paragraph_format.left_indent is None:
-            para_left_indent = para.paragraph_format.left_indent.pt
-            if not numbering_left_indent is None:
-                para_left_indent -= numbering_left_indent
-        elif not para.style.paragraph_format.left_indent is None:
-            para_left_indent = para.style.paragraph_format.left_indent.pt
-        elif not document_para_style is None:
-            para_left_indent = document.styles[para_style].paragraph_format.left_indent.pt
-        elif not numbering_left_indent is None:
-            para_left_indent = numbering_left_indent
+        return para_left_indent
+    except Exception as error:
+        print(f"Error while fetching the left indent information from para: {error}")
 
-    return para_left_indent
 
+# get para left indentation from numbering_pd
 def get_left_indent_from_numbering_pd(numbering_pd, document_pPr, para_pPr):
     """ Function to retrieve the left_indent from the numbering_pd
     Args:
@@ -796,39 +910,45 @@ def get_left_indent_from_numbering_pd(numbering_pd, document_pPr, para_pPr):
     Returns:
         [int]: Integer representing the left_indent for a paragraph, or None if none found
     """
-    para_left_indent = None
+    try:
+        para_left_indent = None
 
-    if not para_pPr is None:
-        # Extract out the number id for the list
-        num_id = -1
-        level = 0
-        if not para_pPr.numPr is None:
-            num_id = str(para_pPr.numPr.numId.val)
-            # Identify the Level, if any
-            if not para_pPr.numPr.ilvl is None:
-                level = str(para_pPr.numPr.ilvl.val)
-        elif not document_pPr is None:
+        if not para_pPr is None:
             # Extract out the number id for the list
-            if not document_pPr.numPr is None:
-                num_id = str(document_pPr.numPr.numId.val)
+            num_id = -1
+            level = 0
+            if not para_pPr.numPr is None:
+                num_id = str(para_pPr.numPr.numId.val)
                 # Identify the Level, if any
-                if not document_pPr.numPr.ilvl is None:
-                    level = str(document_pPr.numPr.ilvl.val)
+                if not para_pPr.numPr.ilvl is None:
+                    level = str(para_pPr.numPr.ilvl.val)
+            elif not document_pPr is None:
+                # Extract out the number id for the list
+                if not document_pPr.numPr is None:
+                    num_id = str(document_pPr.numPr.numId.val)
+                    # Identify the Level, if any
+                    if not document_pPr.numPr.ilvl is None:
+                        level = str(document_pPr.numPr.ilvl.val)
 
-        # Identify the left_indent from the numbering_pd DataFrame
-        numbering_left_indent = get_data_from_numbering_pd(
-            numbering_pd,
-            num_id, level,
-            column = "level_para_prop_left"
+            # Identify the left_indent from the numbering_pd DataFrame
+            numbering_left_indent = get_data_from_numbering_pd(
+                numbering_pd,
+                num_id, level,
+                column = "level_para_prop_left")
 
-        )
-        # Convert to Pts if there is any value
-        if len(numbering_left_indent) > 0:
-            para_left_indent = int(numbering_left_indent) / 20
+            # Convert to Pts if there is any value
+            if len(str(numbering_left_indent)) > 0:
+                # para_left_indent = int(numbering_left_indent) / 20
+                #######  this is for testing the project 500200 #####
+                para_left_indent = float(numbering_left_indent) / 20
+            
 
-    return para_left_indent
+        return para_left_indent
+    except Exception as error:
+        print(f"Error while fetching the left indent information from list para: {error}")
 
 
+# get para right indentation
 def get_para_right_indent(document, para):
     """ Function to find the right indent for a paragraph, default to 0
     Input:
@@ -837,23 +957,29 @@ def get_para_right_indent(document, para):
     Output:
     - para_right_indent: Number indicating the right indent
     """
-    para_right_indent = 0
+    try:
+        para_right_indent = 0
+        document_para_style = None
+        # Get the paragraph style
+        para_style = get_para_style(para)
+        # Check the style from the document styles
+        if para_style is not None:
+            document_para_style = document.styles[para_style].paragraph_format.right_indent
 
-    # Get the paragraph style
-    para_style = get_para_style(para)
-    # Check the style from the document styles
-    document_para_style = document.styles[para_style].paragraph_format.right_indent
+        if not para is None:
+            if not para.paragraph_format.right_indent is None:
+                para_right_indent = para.paragraph_format.right_indent.pt
+            elif not para.style.paragraph_format.right_indent is None:
+                para_right_indent = para.style.paragraph_format.right_indent.pt
+            elif not document_para_style is None:
+                para_right_indent = document.styles[para_style].paragraph_format.right_indent.pt
 
-    if not para is None:
-        if not para.paragraph_format.right_indent is None:
-            para_right_indent = para.paragraph_format.right_indent.pt
-        elif not para.style.paragraph_format.right_indent is None:
-            para_right_indent = para.style.paragraph_format.right_indent.pt
-        elif not document_para_style is None:
-            para_right_indent = document.styles[para_style].paragraph_format.right_indent.pt
+        return para_right_indent
+    except Exception as error:
+        print(f"Error while fetching the right indent information from para: {error}")
 
-    return para_right_indent
 
+# get para first line indentation
 def get_para_first_line_indent(document, para):
     """ Function to retrieve the first line indent for a paragraph
     Input:
@@ -862,23 +988,30 @@ def get_para_first_line_indent(document, para):
     Output:
     - first_line_indent: The length of the first line indent, default to 0, expressed in points
     """
-    first_line_indent = 0
+    try:
+        first_line_indent = 0
+        document_para_style = None
 
-    # Get the paragraph style
-    para_style = get_para_style(para)
-    # Check the style from the document styles
-    document_para_style = document.styles[para_style].paragraph_format.first_line_indent
+        # Get the paragraph style
+        para_style = get_para_style(para)
+        # Check the style from the document styles
+        if para_style is not None:
+            document_para_style = document.styles[para_style].paragraph_format.first_line_indent
 
-    if not para is None:
-        if not para.paragraph_format.first_line_indent is None:
-            first_line_indent = para.paragraph_format.first_line_indent.pt
-        elif not para.style.paragraph_format.first_line_indent is None:
-            first_line_indent = para.style.paragraph_format.first_line_indent.pt
-        elif not document_para_style is None:
-            first_line_indent = document.styles[para_style].paragraph_format.first_line_indent.pt
+        if not para is None:
+            if not para.paragraph_format.first_line_indent is None:
+                first_line_indent = para.paragraph_format.first_line_indent.pt
+            elif not para.style.paragraph_format.first_line_indent is None:
+                first_line_indent = para.style.paragraph_format.first_line_indent.pt
+            elif not document_para_style is None:
+                first_line_indent = document.styles[para_style].paragraph_format.first_line_indent.pt
 
-    return first_line_indent
+        return first_line_indent
+    except Exception as error:
+            print(f"Error while fetching the right indent information from para: {error}")
 
+
+# get para alignment
 def get_para_alignment(document, para):
     """ Function to identify the alignment of the para
     Input:
@@ -915,6 +1048,8 @@ def get_para_alignment(document, para):
 
     return para_alignment
 
+
+# get para line space
 def get_para_line_space(document, para):
     """ Function to identify the line spacing of a paragraph
     Input:
@@ -943,6 +1078,7 @@ def get_para_line_space(document, para):
     return para_line_space
 
 
+# get space above para
 def get_para_space_above(document, para):
     """ Function to identify the spacing above of a paragraph
     Input:
@@ -970,6 +1106,8 @@ def get_para_space_above(document, para):
 
     return para_space_above
 
+
+# get space below para
 def get_para_space_below(document, para):
     """ Function to identify the spacing below of a paragraph
     Input:
@@ -997,9 +1135,9 @@ def get_para_space_below(document, para):
 
     return para_space_below
 
-def get_para_border(para_prop_dict,
-                    para
-):
+
+# get para border
+def get_para_border(para_prop_dict, para):
     """Function to retrieve the Paragraph Border Properties from XML
     Args:
         para_prop_dict (dict): Dictionary results should be appended to
@@ -1132,8 +1270,9 @@ def get_para_border(para_prop_dict,
 
     return para_prop_dict
 
-def get_para_shading(para_prop_dict,
-                    para):
+
+# get para shading
+def get_para_shading(para_prop_dict, para):
     """Function to retrieve the Paragraph Shading Properties from XML
     Args:
         para_prop_dict (dict): Dictionary results should be appended to
@@ -1164,6 +1303,7 @@ def get_para_shading(para_prop_dict,
     return para_prop_dict
 
 
+# get para single strike
 def get_para_single_strike(para):
     """ Function to return if a paragraph is all single striked through
     All runs within the paragraph should the single striked through in order to
@@ -1174,14 +1314,19 @@ def get_para_single_strike(para):
         boolean: True/False wheather all runs which contain text in the paragraph are
         single striked throug
     """
+    # empty list to store the run strike
     run_strike = []
-
+    # iterate over each para runs 
     for run in para.runs:
+        # check if its not empty
         if not run.text == "":
+            # append into run strike list
             run_strike.append(run.font.strike)
 
     return all(run_strike)
 
+
+# get para double strike
 def get_para_double_strike(para):
     """ Function to return if a paragraph is all double striked through
     All runs within the paragraph should the double striked through in order to
@@ -1192,14 +1337,19 @@ def get_para_double_strike(para):
         boolean: True/False wheather all runs which contain text in the paragraph are
         double striked throug
     """
+    # empty list to store the run strike
     run_strike = []
-
+    # iterate over each para runs 
     for run in para.runs:
+        # check if its not empty
         if not run.text == "":
+            # append into run strike list
             run_strike.append(run.font.double_strike)
 
     return all(run_strike)
 
+
+# get underline para
 def get_para_underline(document, para):
     """[summary]
     Args:
@@ -1208,15 +1358,17 @@ def get_para_underline(document, para):
     Returns:
         [str]: String containing the underline value for the paragraph
     """
-
+    # underline empty string as an placeholder
     underline = ""
 
     # Get the Underline values for each run in the paragraph
-
+    # empty list to store run values
     run_values = []
-
+    # iterate over each para runs
     for run in para.runs:
+        # check if its not empty 
         if not run.text == "":
+            # append into run_values list
             run_values.append(run.font.underline)
 
     # Check if there is only one run_value
@@ -1233,10 +1385,12 @@ def get_para_underline(document, para):
     # If underline is still blank after checking the runs, check the style
     if underline == "":
         # Get the paragraph style
+        style_underline = None
         para_style = get_para_style(para)
 
         # Check the font underline in the document style
-        style_underline = document.styles[para_style].font.underline
+        if para_style is not None:
+            style_underline = document.styles[para_style].font.underline
 
         # If its not None, then update the return value
         if not style_underline is None:
@@ -1250,6 +1404,7 @@ def get_para_underline(document, para):
     return underline
 
 
+# get para small caption
 def get_para_small_caps(para):
     """ Function to identify if the para has small caps enabled
     Args:
@@ -1257,19 +1412,24 @@ def get_para_small_caps(para):
     Returns:
         boolean: True/False if the paragraph has small caps enabled
     """
+    # define output as placeholder
     output = "No Text"
+    # empty list to store run values
     run_values = []
 
-
+    # iterate over para.runs
     for run in para.runs:
         if not run.text == "":
             run_values.append(run.font.small_caps)
 
+    # check if list is not empty
     if len(run_values) > 0:
         output = any(run_values)
 
     return output
 
+
+# create structured xml after list of dict properties
 def create_structured_xml(para_properties_list, c_data_tags):
     """ Function to transform a list of dictionary poperties into XML
     Input:
@@ -1279,35 +1439,48 @@ def create_structured_xml(para_properties_list, c_data_tags):
     Output:
     - para_properties_xml: xml string of the para_properties_list
     """
+    # para properties xml placeholder
     para_properties_xml = ""
-    if len(para_properties_list) > 0:
-        # Create root element
-        root = etree.Element("ArrayOfParagraphProperties")
+    try:
+        if len(para_properties_list) > 0:
+            # Create root element
+            root = etree.Element("ArrayOfParagraphProperties")
 
-        # Loop through each dictionary in the list
-        for para_dict in para_properties_list:
-            # Create a parent node for the sub-child of root
-            parent = etree.SubElement(root, "ParagraphProperties")
+            # Loop through each dictionary in the list
+            for para_dict in para_properties_list:
+                # Create a parent node for the sub-child of root
+                parent = etree.SubElement(root, "ParagraphProperties")
 
-            # Loop through each key, value pair in the dictionary
-            for key, value in para_dict.items():
-                # Check if the value is None, if it is then no text to be added
-                if value is None:
-                    etree.SubElement(parent, key)
-                else:
-                    # Condition when there is text to be added for a sub-child of parent
-                    # Check if the current key is of CDATA type
-                    if key in c_data_tags:
-                        etree.SubElement(parent, key).text = etree.CDATA(str(value))
+                # Loop through each key, value pair in the dictionary
+                for key, value in para_dict.items():
+                    # Check if the value is None, if it is then no text to be added
+                    if value is None:
+                        etree.SubElement(parent, key)
                     else:
-                        etree.SubElement(parent, key).text = str(value)
+                        # Condition when there is text to be added for a sub-child of parent
+                        # Check if the current key is of CDATA type
+                        if key in c_data_tags:
+                            etree.SubElement(parent, key).text = etree.CDATA(str(value))
+                        else:
+                            etree.SubElement(parent, key).text = str(value)
 
-            # Append the parent to the root
-            root.append(parent)
+                # Append the parent to the root
+                root.append(parent)
 
-    # Convert to a UTF-8 encoded string, and add in the initial xml declaration
-    para_properties_xml = etree.tostring(root, xml_declaration = True,
-                                         encoding = "UTF-8") \
-                                .decode("UTF-8")
+        # Convert to a UTF-8 encoded string, and add in the initial xml declaration
+        para_properties_xml = etree.tostring(root, xml_declaration = True,
+                                            encoding = "UTF-8").decode("UTF-8")
 
-    return para_properties_xml
+        return para_properties_xml
+    except Exception as error:
+        print(f"Error occured while writing the property extraction into XML: {error}")
+
+# generate random id
+def gen_id():
+    return str(uuid.uuid4().hex)[0:7].upper()
+
+
+if __name__ == "__main__":
+    doc_xml = extract_docx_properties("/Users/senthil/Downloads/RL_01_TRUT_C001.docx")
+    
+print (doc_xml)
